@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
-import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
 import Link from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { Alert } from '@mui/material'
@@ -24,9 +22,7 @@ function Copyright(props) {
       {...props}
     >
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
+      Appnovia {''}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -53,7 +49,7 @@ function Register() {
   useEffect(() => {
     if (success) {
       setTimeout(() => {
-        navigate('/messenger', {
+        navigate('/login', {
           replace: true,
         })
       }, 1500)
@@ -68,16 +64,13 @@ function Register() {
           marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
+          // alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
+        <Typography component="h1" variant="h3">
+          Create an account
         </Typography>
-        {(error || error1) && (
+        {/* {(error || error1) && (
           <Box margin={3}>
             <Alert severity="error">{error}</Alert>
           </Box>
@@ -86,9 +79,9 @@ function Register() {
           <Box margin={3}>
             <Alert severity="success">{success}</Alert>
           </Box>
-        )}
+        )} */}
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-          <Grid container spacing={2}>
+          <Grid container spacing={4}>
             <Grid item xs={12}>
               <TextField
                 autoComplete="given-name"
@@ -96,7 +89,7 @@ function Register() {
                 required
                 fullWidth
                 id="name"
-                label="Name"
+                label="Fullname"
                 autoFocus
               />
             </Grid>
@@ -121,37 +114,41 @@ function Register() {
                 autoComplete="new-password"
               />
             </Grid>
+            <Grid container justifyContent="flex-end">
+              <Grid item fontSize={16} marginTop={2}>
+                Already A Member?
+                <Link href="/" variant="body2" className='no-underline font-bold text-base' style={{ fontWeight: 'bold', fontSize: 16, marginLeft: 2 }}>
+                  Log In
+                </Link>
+              </Grid>
+            </Grid>
           </Grid>
           {!isPending && (
             <Button
               type="submit"
               fullWidth
+              size="large"
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
-              Sign Up
+              Create account
             </Button>
           )}
           {isPending && (
             <Button
               fullWidth
               variant="contained"
+              size="large"
               sx={{ mt: 3, mb: 2 }}
               disabled
             >
               Please Wait...
             </Button>
           )}
-          <Grid container justifyContent="flex-end">
-            <Grid item>
-              <Link href="/" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
         </Box>
+        <Copyright />
       </Box>
-      <Copyright sx={{ mt: 5 }} />
     </Container>
   )
 }

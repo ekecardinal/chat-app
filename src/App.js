@@ -8,6 +8,8 @@ import Nav from './components/Nav'
 
 //Hooks
 import { useAuthContext } from './hooks/useAuthContext'
+import Sidebar from './components/Sidebar'
+import Home from './pages/Home'
 
 const theme = createTheme()
 
@@ -18,22 +20,21 @@ function App() {
       {authIsReady && (
         <div>
           <BrowserRouter>
-            <Nav />
             <Routes>
               <Route
-                path="/"
+                path="/login"
                 exact
-                element={!user ? <Login /> : <Messenger />}
+                element={!user ? <Login /> : <Home />}
               />
               <Route
                 path="/register"
                 exact
-                element={!user ? <Register /> : <Messenger />}
+                element={!user ? <Register /> : <Home />}
               />
               <Route
-                path="/messenger"
+                path="/"
                 exact
-                element={user ? <Messenger /> : <Login />}
+                element={user ? <Home /> : <Login />}
               />
             </Routes>
           </BrowserRouter>
