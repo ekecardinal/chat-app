@@ -8,7 +8,7 @@ const GroupChat = ({
 }) => {
     return (
         <div>
-            <div className='mt-6  px-2'>
+            <div className='mt-6 px-1'>
                 <div className='text-gray-600 leading-loose my-2'>
                     GROUPS
                 </div>
@@ -18,7 +18,7 @@ const GroupChat = ({
                             key={group.uid}
                             onClick={() => selectGroup(group)}
                         >
-                            <div className='relative rounded-lg p-2 px-4 flex items-center space-x-3 hover:border-gray-400 focus-within:bg-slate-100 my-3 hover:bg-slate-100 transition duration-500 ease-in-out'>
+                            <div className='relative rounded-lg p-2 px-2 flex items-center space-x-3 hover:border-gray-400 focus-within:bg-slate-100 my-3 hover:bg-slate-100 transition duration-500 ease-in-out'>
                                 <div className='flex-1 min-w-0'>
                                     <NavLink to="/" className='focus:outline-none'>
                                         <div className='flex items-center justify-between'>

@@ -16,7 +16,7 @@ const Sidebar = ({
     return (
         <div className='flex-grow max-w-7xl mx-auto lg:flex'>
             <div className='flex-1 min-w-0 bg-white xl:flex'>
-                <div className='border-b border-gray-200 xl:border-b-0 xl:flex-shrink-0 xl:w-80 xl:border-r xl-border-gray-200 px-2 h-screen'>
+                <div className='border-b border-gray-200 xl:border-b-0 xl:flex-shrink-0 xl:w-80 xl:border-r xl-border-gray-200 px-2 overflow-y-auto h-screen'>
                     <div className='h-full pl-4 pr-2 py-6 sm:pl-6 lg:pl-8 xl:pl-0'>
                         <div className='h-full relative'>
                             <div className='relative rounded-lg p-2 flex items-center space-x-3 hover:border-gray-400 mb-4'>

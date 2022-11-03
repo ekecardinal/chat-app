@@ -29,7 +29,7 @@ const DirectMessage = ({ selectUser, user1, chat, documents }) => {
 
     return (
         <div>
-            <div className='mt-16 px-2'>
+            <div className='mt-16 px-1'>
                 <div className='text-gray-600 leading-loose my-2'>
                     RECENT CHAT
                 </div>
@@ -39,7 +39,7 @@ const DirectMessage = ({ selectUser, user1, chat, documents }) => {
                             key={user.uid}
                             onClick={() => selectUser(user)}
                         >
-                            <div className='relative rounded-lg p-2 px-4 flex items-center space-x-3 hover:border-gray-400 focus-within:bg-slate-100 my-3 hover:bg-slate-100 transition duration-500 ease-in-out'>
+                            <div className='relative rounded-lg p-2 px-2 flex items-center space-x-3 hover:border-gray-400 focus-within:bg-slate-100 my-3 hover:bg-slate-100 transition duration-500 ease-in-out'>
                                 <div className='flex-1 min-w-0'>
                                     <NavLink to="/" className='focus:outline-none flex'>
                                         <img

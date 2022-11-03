@@ -50,8 +50,10 @@ const Home = () => {
 
         const user2 = chat.uid
         const id = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`
+
         const msgsRef = collection(appFirestore, 'messages', id, 'chat')
         const q = query(msgsRef, orderBy('createdAt', 'asc'))
+
         onSnapshot(q, (querySnapshot) => {
             let msgs = []
             querySnapshot.forEach((doc) => {
@@ -65,6 +67,23 @@ const Home = () => {
         if (docSnap.data()?.from !== user1) {
             await updateDoc(doc(appFirestore, 'lastMsg', id), { unread: false })
         }
+    }
+
+    const selectGroup = async (group) => {
+        setChat(group)
+        setInput1('handle1')
+        // console.log('group', group.uid)
+        const id = group.uid
+        const groupName = group.name
+        const msgsRef = collection(appFirestore, 'messages', id, `${groupName}`)
+        const q = query(msgsRef, orderBy('createdAt', 'asc'))
+        onSnapshot(q, (querySnapshot) => {
+            let msgs = []
+            querySnapshot.forEach((doc) => {
+                msgs.push(doc.data())
+            })
+            setMsgs(msgs)
+        })
     }
 
     const handleChat = async (e) => {
@@ -109,24 +128,6 @@ const Home = () => {
         }
         setText('')
     }
-
-    const selectGroup = async (group) => {
-        setChat(group)
-        setInput1('handle1')
-        // console.log('group', group.uid)
-        const id = group.uid
-        const groupName = group.name
-        const msgsRef = collection(appFirestore, 'messages', id, `${groupName}`)
-        const q = query(msgsRef, orderBy('createdAt', 'asc'))
-        onSnapshot(q, (querySnapshot) => {
-            let msgs = []
-            querySnapshot.forEach((doc) => {
-                msgs.push(doc.data())
-            })
-            setMsgs(msgs)
-        })
-    }
-
 
     return (
         <div className='flex'>
